@@ -14,7 +14,7 @@ Include libraries(`#include <Milkcocoa.h> and #include "ESP8266.h" and #include 
 
 ```
 ESP8266Client wifi;
-Milkcocoa milkcocoa = Milkcocoa(&wifi, "milkcocoa_app_id.mlkcca.com", 1883, "milkcocoa_app_id", "mqtt_client_id");
+Milkcocoa *milkcocoa = Milkcocoa::createWithApiKey(&wifi, "pubsub1.mlkcca.com", 1883, "demo", "mqtt_client_id", "demo");
 
 void setup() {
 	//"Serial5" Serial port connected to ESP8266.
@@ -44,18 +44,18 @@ void setup() {
 	}
 
 	//"on" API was able to call in setup
-	milkcocoa.on("milkcocoa_datastore_name", "push", onpush);
+	milkcocoa->on("milkcocoa_datastore_name", MILKCOCOA_EV_PUSH, onpush);
 }
 
 void loop() {
 	//milkcocoa.loop must be called in loop()
-	milkcocoa.loop();
+	milkcocoa->loop();
 
 	//push
 	DataElement elem = DataElement();
 	elem.setValue("name", "Milk");
 	elem.setValue("age", 35);
-	milkcocoa.push("milkcocoa_datastore_name", elem);
+	milkcocoa->push("milkcocoa_datastore_name", elem);
 
 	delay(10000);
 }
