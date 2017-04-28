@@ -65,7 +65,7 @@ void setup() {
       Serial.print("single err\r\n");
   }
 
-  if(milkcocoa.on(MILKCOCOA_DATASTORE, "push", onpush)){
+  if(milkcocoa.on(MILKCOCOA_DATASTORE, MILKCOCOA_EV_PUSH, onpush)){
       Serial.println("milkcocoa on sucesss");   
   }
   else {

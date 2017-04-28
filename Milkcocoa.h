@@ -32,6 +32,9 @@ SOFTWARE.
 
 #define MILKCOCOA_SUBSCRIBERS 8
 
+#define MILKCOCOA_EV_PUSH 1
+#define MILKCOCOA_EV_SEND 3
+
 class DataElement {
   public:
     DataElement();
@@ -46,7 +49,6 @@ class DataElement {
     float getFloat(const char *key);
     
   private:
-    aJsonObject *params;
     aJsonObject *paJsonObj;
 };
 
@@ -65,13 +67,13 @@ class Milkcocoa {
  public:
   Milkcocoa(Client *client, const char *host, uint16_t port, const char *_app_id, const char *client_id);
   Milkcocoa(Client *client, const char *host, uint16_t port, const char *_app_id, const char *client_id, const char *_session);
-  static Milkcocoa* createWithApiKey(Client *client, const char *host, uint16_t port, const char *app_id, const char *client_id, const char *key, const char *secret);
+  static Milkcocoa* createWithApiKey(Client *client, const char *host, uint16_t port, const char *app_id, const char *client_id, const char *key);
   void connect();
   void loop();
   bool ping();
   bool push(const char *path, DataElement *pdataelement);
   bool send(const char *path, DataElement *pdataelement);
-  bool on(const char *path, const char *event, GeneralFunction cb);
+  bool on(const char *path, const int event, GeneralFunction cb);
 
 
 private:

@@ -27,7 +27,7 @@ ESP8266Client wifi;
 const char MQTT_SERVER[] PROGMEM    = MILKCOCOA_APP_ID ".mlkcca.com";
 const char MQTT_CLIENTID[] PROGMEM  = __TIME__ MILKCOCOA_APP_ID;
 
-Milkcocoa *milkcocoa = Milkcocoa::createWithApiKey(&wifi, MQTT_SERVER, MILKCOCOA_SERVERPORT, MILKCOCOA_APP_ID, MQTT_CLIENTID, MILKCOCOA_API_KEY, MILKCOCOA_API_SECRET);
+Milkcocoa *milkcocoa = Milkcocoa::createWithApiKey(&wifi, MQTT_SERVER, MILKCOCOA_SERVERPORT, MILKCOCOA_APP_ID, MQTT_CLIENTID, MILKCOCOA_API_KEY);
 
 int cnt;
 
@@ -67,7 +67,7 @@ void setup() {
       Serial.print("single err\r\n");
   }
 
-  if(milkcocoa->on(MILKCOCOA_DATASTORE, "push", onpush)){
+  if(milkcocoa->on(MILKCOCOA_DATASTORE, MILKCOCOA_EV_PUSH, onpush)){
       Serial.println("milkcocoa on sucesss");   
   }
   else {
