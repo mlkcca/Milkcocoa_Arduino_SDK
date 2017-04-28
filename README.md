@@ -111,7 +111,7 @@ Copyright (C) 2015 Embedded and Real-Time Systems Laboratory
 - Milkcocoa.h
 - Milkcocoa.cpp
 
-### Using
+### Acknowledgement
 
 - https://github.com/adafruit/Adafruit_MQTT_Library
 - https://github.com/interactive-matter/aJson
